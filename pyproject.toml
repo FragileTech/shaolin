@@ -6,20 +6,21 @@ authors = [
     { name = "guillemdb", email = "guillem@fragile.tech" }
 ]
 dependencies = [
-    "holoviews>=1.19.1",
+    "holoviews",
     "panel",
-    "networkx>=3.3",
-    "pygraphviz>=1.13",
-    "scipy>=1.14.1",
-    "einops>=0.8.0",
-    "matplotlib>=3.9.2",
-    "holoviews>=1.19.1",
-    "hvplot>=0.10.0",
-    "ipywidgets>=8.1.5",
-    "matplotlib>=3.9.2",
-    "ipython>=8.27.0",
-    "pip>=24.2",
-    "seaborn>=0.13.2",
+    "networkx",
+    "scipy",
+    "einops",
+    "matplotlib",
+    "holoviews",
+    "hvplot",
+    "ipywidgets",
+    "matplotlib",
+    "seaborn",
+    "pyarrow",
+    "fastparquet",
+    "scikit-learn",
+    "pygraphviz; sys_platform == 'linux'",
 ]
 readme = "README.md"
 homepage = "https://github.com/FragileTech/shaolin"
@@ -28,14 +29,15 @@ documentation = "https://github.com/FragileTech/shaolin"
 requires-python = ">= 3.8"
 [project.optional-dependencies]
 jupyter = [
+    "ipython; python_version > \"3.9\"",
     "jupyterlab<3.6.0; python_version < \"3.11\"",
     "panel",
     "holoviews",
     "ipywidgets",
     "jupyter; python_version < \"3.11\"",
     "notebook; python_version < \"3.11\"",
-    "pyparsing>=3.1.4",
-    "hvplot>=0.10.0",
+    "pyparsing",
+    "hvplot",
 ]
 test = [
     "psutil>=5.8.0",
@@ -55,6 +57,7 @@ build-backend = "hatchling.build"
 managed = true
 universal = true
 dev-dependencies = [
+    "pip>=24.2",
     "ruff",
     "sphinx",
     "linkify-it-py",

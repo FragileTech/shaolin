@@ -10,6 +10,8 @@ from shaolin.colormaps import ColorMap
 
 
 def is_string_column(df, column_name):
+    if isinstance(df[column_name].dtype, pd.CategoricalDtype):
+        return False
     return df[column_name].apply(lambda x: isinstance(x, str)).any()
 
 
@@ -350,8 +352,7 @@ def add_to_streams(streams: dict, dim):
         streams[name] = dim.param.value
         if name.endswith("color"):
             name = name[: -len("color")]
-        if name.endswith("_"):
-            name = name[:-1]
+        name = name.removesuffix("_")
         cmap_name = f"{name}_cmap" if name else "cmap"
         streams[cmap_name] = dim.param.cmap
     return streams

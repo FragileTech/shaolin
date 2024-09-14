@@ -12,7 +12,7 @@
 -e file:.
 accessible-pygments==0.0.5
     # via pydata-sphinx-theme
-alabaster==1.0.0
+alabaster==0.7.16
     # via sphinx
 anyio==4.4.0 ; python_full_version < '3.11'
     # via jupyter-server
@@ -75,6 +75,8 @@ contourpy==1.3.0
     # via matplotlib
 coverage==7.6.1
     # via pytest-cov
+cramjam==2.8.3
+    # via fastparquet
 cycler==0.12.1
     # via matplotlib
 debugpy==1.8.5
@@ -85,11 +87,12 @@ defusedxml==0.7.1 ; python_full_version < '3.11'
     # via nbconvert
 distro==1.9.0
     # via ruyaml
-docutils==0.21.2
+docutils==0.20.1
     # via myst-parser
     # via pybtex-docutils
     # via pydata-sphinx-theme
     # via sphinx
+    # via sphinx-rtd-theme
     # via sphinx-togglebutton
     # via sphinxcontrib-bibtex
 einops==0.8.0
@@ -107,10 +110,14 @@ executing==2.1.0
     # via stack-data
 fastjsonschema==2.20.0
     # via nbformat
+fastparquet==2024.5.0
+    # via shaolin
 fonttools==4.53.1
     # via matplotlib
 fqdn==1.5.1 ; python_full_version < '3.11'
     # via jsonschema
+fsspec==2024.9.0
+    # via fastparquet
 greenlet==3.1.0 ; (python_full_version < '3.13' and platform_machine == 'AMD64') or (python_full_version < '3.13' and platform_machine == 'WIN32') or (python_full_version < '3.13' and platform_machine == 'aarch64') or (python_full_version < '3.13' and platform_machine == 'amd64') or (python_full_version < '3.13' and platform_machine == 'ppc64le') or (python_full_version < '3.13' and platform_machine == 'win32') or (python_full_version < '3.13' and platform_machine == 'x86_64')
     # via sqlalchemy
 holoviews==1.19.1
@@ -118,9 +125,9 @@ holoviews==1.19.1
     # via shaolin
 hvplot==0.10.0
     # via shaolin
-hypothesis==6.112.0
+hypothesis==6.112.1
     # via shaolin
-idna==3.8
+idna==3.9
     # via anyio
     # via jsonschema
     # via requests
@@ -128,7 +135,14 @@ imagesize==1.4.1
     # via sphinx
 importlib-metadata==8.5.0
     # via jupyter-cache
+    # via jupyterlab-server
+    # via markdown
     # via myst-nb
+    # via nbconvert
+    # via sphinx
+    # via sphinxcontrib-bibtex
+importlib-resources==6.4.5 ; python_full_version < '3.10'
+    # via matplotlib
 iniconfig==2.0.0
     # via pytest
 ipykernel==6.29.5
@@ -137,7 +151,7 @@ ipykernel==6.29.5
     # via myst-nb
     # via nbclassic
     # via notebook
-ipython==8.27.0
+ipython==8.18.1
     # via ipykernel
     # via ipywidgets
     # via jupyter-console
@@ -164,6 +178,8 @@ jinja2==3.1.4
     # via notebook
     # via sphinx
     # via sphinx-autoapi
+joblib==1.4.2
+    # via scikit-learn
 json5==0.9.25 ; python_full_version < '3.11'
     # via jupyterlab-server
 jsonpointer==3.0.0 ; python_full_version < '3.11'
@@ -242,7 +258,7 @@ mdurl==0.1.2
 mistune==3.0.2 ; python_full_version < '3.11'
     # via nbconvert
 myst-nb==1.1.1
-myst-parser==4.0.0
+myst-parser==3.0.1
     # via myst-nb
 nbclassic==1.1.0 ; python_full_version < '3.11'
     # via jupyterlab
@@ -267,7 +283,7 @@ nest-asyncio==1.6.0
     # via jupyter-client
     # via nbclassic
     # via notebook
-networkx==3.3
+networkx==3.2.1
     # via shaolin
 notebook==6.5.7 ; python_full_version < '3.11'
     # via jupyter
@@ -275,19 +291,23 @@ notebook==6.5.7 ; python_full_version < '3.11'
     # via shaolin
 notebook-shim==0.2.4 ; python_full_version < '3.11'
     # via nbclassic
-numpy==2.1.1
+numpy==2.0.2
     # via bokeh
     # via contourpy
+    # via fastparquet
     # via holoviews
     # via hvplot
     # via matplotlib
     # via pandas
+    # via pyarrow
+    # via scikit-learn
     # via scipy
     # via seaborn
 overrides==7.7.0 ; python_full_version < '3.11'
     # via jupyter-server
 packaging==24.1
     # via bokeh
+    # via fastparquet
     # via holoviews
     # via hvplot
     # via ipykernel
@@ -302,6 +322,7 @@ packaging==24.1
     # via sphinx
 pandas==2.2.2
     # via bokeh
+    # via fastparquet
     # via holoviews
     # via hvplot
     # via panel
@@ -319,14 +340,13 @@ param==2.1.1
     # via pyviz-comms
 parso==0.8.4
     # via jedi
-pexpect==4.9.0 ; sys_platform != 'emscripten' and sys_platform != 'win32'
+pexpect==4.9.0 ; sys_platform != 'win32'
     # via ipython
 pillow==10.4.0
     # via bokeh
     # via matplotlib
 pip==24.2
-    # via shaolin
-platformdirs==4.3.2
+platformdirs==4.3.3
     # via jupyter-core
 pluggy==1.5.0
     # via pytest
@@ -339,11 +359,13 @@ prompt-toolkit==3.0.47
 psutil==6.0.0
     # via ipykernel
     # via shaolin
-ptyprocess==0.7.0 ; (python_full_version < '3.11' and os_name != 'nt') or (os_name == 'nt' and sys_platform != 'emscripten' and sys_platform != 'win32') or (python_full_version >= '3.11' and sys_platform != 'emscripten' and sys_platform != 'win32')
+ptyprocess==0.7.0 ; (python_full_version < '3.11' and os_name != 'nt') or (os_name == 'nt' and sys_platform != 'win32') or (python_full_version >= '3.11' and sys_platform != 'win32')
     # via pexpect
     # via terminado
 pure-eval==0.2.3
     # via stack-data
+pyarrow==17.0.0
+    # via shaolin
 pybtex==0.24.0
     # via pybtex-docutils
     # via sphinxcontrib-bibtex
@@ -360,7 +382,7 @@ pygments==2.18.0
     # via nbconvert
     # via pydata-sphinx-theme
     # via sphinx
-pygraphviz==1.13
+pygraphviz==1.11 ; sys_platform == 'linux'
     # via shaolin
 pyparsing==3.1.4
     # via matplotlib
@@ -427,9 +449,12 @@ rfc3986-validator==0.1.1 ; python_full_version < '3.11'
 rpds-py==0.20.0
     # via jsonschema
     # via referencing
-ruff==0.6.4
+ruff==0.6.5
 ruyaml==0.91.0
-scipy==1.14.1
+scikit-learn==1.5.2
+    # via shaolin
+scipy==1.13.1
+    # via scikit-learn
     # via shaolin
 seaborn==0.13.2
     # via shaolin
@@ -439,6 +464,7 @@ send2trash==1.8.3 ; python_full_version < '3.11'
 setuptools==74.1.2
     # via ruyaml
     # via sphinx-togglebutton
+    # via sphinxcontrib-bibtex
 six==1.16.0
     # via asttokens
     # via bleach
@@ -453,7 +479,7 @@ sortedcontainers==2.4.0
     # via hypothesis
 soupsieve==2.6
     # via beautifulsoup4
-sphinx==8.0.2
+sphinx==7.4.7
     # via myst-nb
     # via myst-parser
     # via pydata-sphinx-theme
@@ -463,20 +489,23 @@ sphinx==8.0.2
     # via sphinx-rtd-theme
     # via sphinx-togglebutton
     # via sphinxcontrib-bibtex
+    # via sphinxcontrib-jquery
     # via sphinxext-opengraph
 sphinx-autoapi==3.3.1
 sphinx-autodoc2==0.5.0
 sphinx-book-theme==1.1.3
 sphinx-copybutton==0.5.2
-sphinx-rtd-theme==0.5.1
+sphinx-rtd-theme==2.0.0
 sphinx-togglebutton==0.3.2
 sphinxcontrib-applehelp==2.0.0
     # via sphinx
-sphinxcontrib-bibtex==2.6.2
+sphinxcontrib-bibtex==2.6.3
 sphinxcontrib-devhelp==2.0.0
     # via sphinx
 sphinxcontrib-htmlhelp==2.1.0
     # via sphinx
+sphinxcontrib-jquery==4.1
+    # via sphinx-rtd-theme
 sphinxcontrib-jsmath==1.0.1
     # via sphinx
 sphinxcontrib-mermaid==0.9.2
@@ -489,12 +518,16 @@ sqlalchemy==2.0.34
     # via jupyter-cache
 stack-data==0.6.3
     # via ipython
+stdlib-list==0.10.0 ; python_full_version < '3.10'
+    # via sphinx-autoapi
 tabulate==0.9.0
     # via jupyter-cache
 terminado==0.18.1 ; python_full_version < '3.11'
     # via jupyter-server
     # via jupyter-server-terminals
     # via notebook
+threadpoolctl==3.5.0
+    # via scikit-learn
 tinycss2==1.3.0 ; python_full_version < '3.11'
     # via nbconvert
 tomli==2.0.1
@@ -546,7 +579,7 @@ uc-micro-py==1.0.3
     # via linkify-it-py
 uri-template==1.3.0 ; python_full_version < '3.11'
     # via jsonschema
-urllib3==2.2.2
+urllib3==2.2.3
     # via requests
 wcwidth==0.2.13
     # via prompt-toolkit
@@ -564,5 +597,6 @@ widgetsnbextension==4.0.13
 xyzservices==2024.9.0
     # via bokeh
     # via panel
-zipp==3.20.1
+zipp==3.20.2
     # via importlib-metadata
+    # via importlib-resources
