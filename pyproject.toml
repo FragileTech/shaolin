@@ -5,13 +5,40 @@ description = "Interactive visualization with holoviews and panel"
 authors = [
     { name = "guillemdb", email = "guillem@fragile.tech" }
 ]
-dependencies = ["holoviews", "panel", "bokeh"]
+dependencies = [
+    "holoviews",
+    "panel",
+    "networkx",
+    "scipy",
+    "einops",
+    "matplotlib",
+    "holoviews",
+    "hvplot",
+    "ipywidgets",
+    "matplotlib",
+    "seaborn",
+    "pyarrow",
+    "fastparquet",
+    "scikit-learn",
+    "pygraphviz; sys_platform == 'linux'",
+]
 readme = "README.md"
 homepage = "https://github.com/FragileTech/shaolin"
 repository = "https://github.com/FragileTech/shaolin"
 documentation = "https://github.com/FragileTech/shaolin"
 requires-python = ">= 3.8"
 [project.optional-dependencies]
+jupyter = [
+    "ipython; python_version > \"3.9\"",
+    "jupyterlab<3.6.0; python_version < \"3.11\"",
+    "panel",
+    "holoviews",
+    "ipywidgets",
+    "jupyter; python_version < \"3.11\"",
+    "notebook; python_version < \"3.11\"",
+    "pyparsing",
+    "hvplot",
+]
 test = [
     "psutil>=5.8.0",
     "pytest>=6.2.5",
@@ -30,6 +57,7 @@ build-backend = "hatchling.build"
 managed = true
 universal = true
 dev-dependencies = [
+    "pip>=24.2",
     "ruff",
     "sphinx",
     "linkify-it-py",
@@ -122,11 +150,12 @@ select = [
     "TD", "T20", "UP", "YTT", "W",
 ]
 ignore = [
+    "D",
     "D100", "D211", "D213", "D104", "D203", "D301", "D407", "S101",
     "FBT001", "FBT002", "FIX002", "ISC001", "PLR0913", "RUF012", "TD003",
     "PTH123", "PLR6301", "PLR0917", "S311", "S403", "PLR0914", "PLR0915", "S608",
     "EM102", "PTH111", "FIX004", "UP035", "PLW2901", "S318", "S408", 'S405',
-    'E902', "TD001", "TD002", "FIX001",
+    'E902', "TD001", "TD002", "FIX001", "PLW3201",
 ]
 # Allow autofix for all enabled rules (when `--fix`) is provided.
 fixable = ["ALL"]

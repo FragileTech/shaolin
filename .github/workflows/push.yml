@@ -78,13 +78,17 @@ jobs:
       if: ${{ matrix.os == 'ubuntu-latest' }}
       run: |
         set -x
+        sudo apt-get install -y graphviz graphviz-dev
         rye pin --relaxed cpython@${{ matrix.python-version }}
         rye sync --all-features
-
+    - name: 'Install MacPorts 2.9.3 on MacOS'
+      if: ${{ matrix.os == 'macos-latest' }}
+      uses: melusina-org/setup-macports@v1
     - name: Install MacOS test and package dependencies
       if: ${{ matrix.os == 'macos-latest' }}
       run: |
         set -x
+        sudo port install graphviz-devel
         rye pin --relaxed cpython@${{ matrix.python-version }}
         rye sync --all-features
 
@@ -152,6 +156,7 @@ jobs:
           restore-keys: ubuntu-latest-system-test
       - name: Install build dependencies
         run: |
+          sudo apt-get install -y graphviz graphviz-dev
           set -x
           pip install uv
           rye install bump2version
